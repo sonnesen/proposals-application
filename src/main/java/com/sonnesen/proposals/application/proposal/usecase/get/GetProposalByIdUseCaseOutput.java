@@ -25,7 +25,7 @@ public record GetProposalByIdUseCaseOutput(Long proposalId, String customerName,
      * @param proposal The Proposal domain object.
      * @return the corresponding GetProposalByIdOutput
      */
-    public static GetProposalByIdUseCaseOutput fromDomain(Proposal proposal) {
+    public static GetProposalByIdUseCaseOutput fromDomain(final Proposal proposal) {
         return new GetProposalByIdUseCaseOutput(proposal.getProposalId(),
                 proposal.getCustomerName(), proposal.getStatus().name(), proposal.getAmount(),
                 proposal.getTermInMonths(), proposal.getCreatedAt(), proposal.getUpdatedAt());

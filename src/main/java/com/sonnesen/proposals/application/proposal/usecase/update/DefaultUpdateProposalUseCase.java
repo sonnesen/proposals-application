@@ -2,8 +2,8 @@ package com.sonnesen.proposals.application.proposal.usecase.update;
 
 import java.util.Objects;
 
+import com.sonnesen.proposals.application.proposal.exception.NotFoundException;
 import com.sonnesen.proposals.application.proposal.gateway.ProposalGateway;
-import com.sonnesen.proposals.domain.exception.NotFoundException;
 
 /**
  * Default implementation of the UpdateProposalUseCase.
@@ -11,9 +11,8 @@ import com.sonnesen.proposals.domain.exception.NotFoundException;
 public class DefaultUpdateProposalUseCase extends UpdateProposalUseCase {
     private final ProposalGateway proposalGateway;
 
-    public DefaultUpdateProposalUseCase(ProposalGateway proposalGateway) {
-        Objects.requireNonNull(proposalGateway);
-        this.proposalGateway = proposalGateway;
+    public DefaultUpdateProposalUseCase(final ProposalGateway proposalGateway) {
+        this.proposalGateway = Objects.requireNonNull(proposalGateway, "proposalGateway must not be null");
     }
 
     /**
@@ -23,7 +22,7 @@ public class DefaultUpdateProposalUseCase extends UpdateProposalUseCase {
      * @return The output data containing the ID of the updated proposal.
      */
     @Override
-    public UpdateProposalUseCaseOutput execute(UpdateProposalUseCaseInput input) {
+    public UpdateProposalUseCaseOutput execute(final UpdateProposalUseCaseInput input) {
         final var proposal = proposalGateway.getById(input.proposalId()).orElseThrow(() -> new NotFoundException(
                 "Proposal with ID " + input.proposalId() + " not found"));
 

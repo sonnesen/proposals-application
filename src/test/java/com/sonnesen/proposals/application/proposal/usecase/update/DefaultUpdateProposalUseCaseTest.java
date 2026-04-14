@@ -1,4 +1,4 @@
-package com.sonnesen.application.proposal.usecase.update;
+package com.sonnesen.proposals.application.proposal.usecase.update;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -21,12 +21,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import com.sonnesen.proposals.application.proposal.exception.NotFoundException;
 import com.sonnesen.proposals.application.proposal.gateway.ProposalGateway;
-import com.sonnesen.proposals.application.proposal.usecase.update.DefaultUpdateProposalUseCase;
-import com.sonnesen.proposals.application.proposal.usecase.update.UpdateProposalUseCaseInput;
-import com.sonnesen.proposals.application.proposal.usecase.update.UpdateProposalUseCaseOutput;
 import com.sonnesen.proposals.domain.exception.IllegalProposalStateException;
-import com.sonnesen.proposals.domain.exception.NotFoundException;
 import com.sonnesen.proposals.domain.proposal.Proposal;
 import com.sonnesen.proposals.domain.proposal.ProposalStatus;
 

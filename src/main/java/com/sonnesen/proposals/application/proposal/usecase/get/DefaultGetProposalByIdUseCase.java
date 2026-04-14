@@ -2,8 +2,8 @@ package com.sonnesen.proposals.application.proposal.usecase.get;
 
 import java.util.Objects;
 
+import com.sonnesen.proposals.application.proposal.exception.NotFoundException;
 import com.sonnesen.proposals.application.proposal.gateway.ProposalGateway;
-import com.sonnesen.proposals.domain.exception.NotFoundException;
 
 /**
  * Default implementation of the use case for retrieving a proposal by its ID.
@@ -11,9 +11,8 @@ import com.sonnesen.proposals.domain.exception.NotFoundException;
 public class DefaultGetProposalByIdUseCase extends GetProposalByIdUseCase {
     private final ProposalGateway proposalGateway;
 
-    public DefaultGetProposalByIdUseCase(ProposalGateway proposalGateway) {
-        Objects.requireNonNull(proposalGateway);
-        this.proposalGateway = proposalGateway;
+    public DefaultGetProposalByIdUseCase(final ProposalGateway proposalGateway) {
+        this.proposalGateway = Objects.requireNonNull(proposalGateway, "proposalGateway must not be null");
     }
 
     /**

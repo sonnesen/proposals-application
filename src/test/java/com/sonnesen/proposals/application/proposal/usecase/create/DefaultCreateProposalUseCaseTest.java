@@ -1,4 +1,4 @@
-package com.sonnesen.application.proposal.usecase.create;
+package com.sonnesen.proposals.application.proposal.usecase.create;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -21,9 +21,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.sonnesen.proposals.application.proposal.gateway.ProposalGateway;
-import com.sonnesen.proposals.application.proposal.usecase.create.CreateProposalUseCaseInput;
-import com.sonnesen.proposals.application.proposal.usecase.create.CreateProposalUseCaseOutput;
-import com.sonnesen.proposals.application.proposal.usecase.create.DefaultCreateProposalUseCase;
 import com.sonnesen.proposals.domain.proposal.Proposal;
 import com.sonnesen.proposals.domain.proposal.ProposalStatus;
 

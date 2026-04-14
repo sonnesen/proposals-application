@@ -3,8 +3,8 @@ package com.sonnesen.proposals.application.proposal.usecase.list;
 import java.util.Objects;
 
 import com.sonnesen.proposals.application.proposal.gateway.ProposalGateway;
-import com.sonnesen.proposals.domain.pagination.Page;
-import com.sonnesen.proposals.domain.pagination.Pagination;
+import com.sonnesen.proposals.application.proposal.shared.pagination.Page;
+import com.sonnesen.proposals.application.proposal.shared.pagination.Pagination;
 
 /**
  * Default implementation of the ListProposalsUseCase.
@@ -12,9 +12,8 @@ import com.sonnesen.proposals.domain.pagination.Pagination;
 public class DefaultListProposalsUseCase extends ListProposalsUseCase {
     private final ProposalGateway proposalGateway;
 
-    public DefaultListProposalsUseCase(ProposalGateway proposalGateway) {
-        Objects.requireNonNull(proposalGateway);
-        this.proposalGateway = proposalGateway;
+    public DefaultListProposalsUseCase(final ProposalGateway proposalGateway) {
+        this.proposalGateway = Objects.requireNonNull(proposalGateway, "proposalGateway must not be null");
     }
 
     /**
@@ -24,7 +23,7 @@ public class DefaultListProposalsUseCase extends ListProposalsUseCase {
      * @return The paginated list of proposals.
      */
     @Override
-    public Pagination<ListProposalsUseCaseOutput> execute(Page page) {
+    public Pagination<ListProposalsUseCaseOutput> execute(final Page page) {
         return proposalGateway.list(page).mapItems(ListProposalsUseCaseOutput::fromDomain);
     }
 

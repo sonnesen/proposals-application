@@ -2,8 +2,8 @@ package com.sonnesen.proposals.application.proposal.usecase.reject;
 
 import java.util.Objects;
 
+import com.sonnesen.proposals.application.proposal.exception.NotFoundException;
 import com.sonnesen.proposals.application.proposal.gateway.ProposalGateway;
-import com.sonnesen.proposals.domain.exception.NotFoundException;
 
 /**
  * Default implementation of the RejectProposalUseCase.
@@ -11,9 +11,8 @@ import com.sonnesen.proposals.domain.exception.NotFoundException;
 public class DefaultRejectProposalUseCase extends RejectProposalUseCase {
     private final ProposalGateway proposalGateway;
 
-    public DefaultRejectProposalUseCase(ProposalGateway proposalGateway) {
-        Objects.requireNonNull(proposalGateway);
-        this.proposalGateway = proposalGateway;
+    public DefaultRejectProposalUseCase(final ProposalGateway proposalGateway) {
+        this.proposalGateway = Objects.requireNonNull(proposalGateway, "proposalGateway must not be null");
     }
 
     /**
@@ -23,7 +22,7 @@ public class DefaultRejectProposalUseCase extends RejectProposalUseCase {
      * @throws NotFoundException if the proposal with the given ID is not found.
      */
     @Override
-    public void execute(Long proposalId) {
+    public void execute(final Long proposalId) {
         final var proposal = proposalGateway.getById(proposalId).orElseThrow(
                 () -> new NotFoundException("Proposal with ID " + proposalId + " not found"));
 

@@ -6,7 +6,7 @@
 
     <groupId>com.sonnesen.proposals.application</groupId>
     <artifactId>proposals-application</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -42,7 +42,7 @@
         <dependency>
             <groupId>com.sonnesen.proposals.domain</groupId>
             <artifactId>proposals-domain</artifactId>
-            <version>1.0.0</version>
+            <version>1.1.0</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -67,7 +67,7 @@
         <plugins>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.2.5</version>
+                <version>3.5.5</version>
             </plugin>
         </plugins>
     </build>

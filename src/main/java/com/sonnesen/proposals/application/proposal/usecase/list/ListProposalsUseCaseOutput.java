@@ -17,7 +17,7 @@ public record ListProposalsUseCaseOutput(Long proposalId, String customerName, B
      * @param proposal
      * @return the corresponding ListProposalsUseCaseOutput
      */
-    public static ListProposalsUseCaseOutput fromDomain(Proposal proposal) {
+    public static ListProposalsUseCaseOutput fromDomain(final Proposal proposal) {
         return new ListProposalsUseCaseOutput(proposal.getProposalId(), proposal.getCustomerName(),
                 proposal.getAmount(), proposal.getTermInMonths(), proposal.getStatus().name(),
                 proposal.getCreatedAt(), proposal.getUpdatedAt());

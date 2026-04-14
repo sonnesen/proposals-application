@@ -11,9 +11,8 @@ import com.sonnesen.proposals.domain.proposal.Proposal;
 public class DefaultCreateProposalUseCase extends CreateProposalUseCase {
     private final ProposalGateway proposalGateway;
 
-    public DefaultCreateProposalUseCase(ProposalGateway proposalGateway) {
-        Objects.requireNonNull(proposalGateway);
-        this.proposalGateway = proposalGateway;
+    public DefaultCreateProposalUseCase(final ProposalGateway proposalGateway) {
+        this.proposalGateway = Objects.requireNonNull(proposalGateway, "proposalGateway must not be null");
     }
 
     /**
@@ -23,7 +22,7 @@ public class DefaultCreateProposalUseCase extends CreateProposalUseCase {
      * @return The output data containing the ID of the created proposal.
      */
     @Override
-    public CreateProposalUseCaseOutput execute(CreateProposalUseCaseInput input) {
+    public CreateProposalUseCaseOutput execute(final CreateProposalUseCaseInput input) {
         final var newProposal = Proposal.newProposal(input.customerName(), input.amount(), input.termInMonths());
         final var createdProposal = proposalGateway.create(newProposal);
 

@@ -2,8 +2,8 @@ package com.sonnesen.proposals.application.proposal.usecase.cancel;
 
 import java.util.Objects;
 
+import com.sonnesen.proposals.application.proposal.exception.NotFoundException;
 import com.sonnesen.proposals.application.proposal.gateway.ProposalGateway;
-import com.sonnesen.proposals.domain.exception.NotFoundException;
 
 /**
  * Default implementation of the CancelProposalUseCase.
@@ -11,9 +11,8 @@ import com.sonnesen.proposals.domain.exception.NotFoundException;
 public class DefaultCancelProposalUseCase extends CancelProposalUseCase {
     private final ProposalGateway proposalGateway;
 
-    public DefaultCancelProposalUseCase(ProposalGateway proposalGateway) {
-        Objects.requireNonNull(proposalGateway);
-        this.proposalGateway = proposalGateway;
+    public DefaultCancelProposalUseCase(final ProposalGateway proposalGateway) {
+        this.proposalGateway = Objects.requireNonNull(proposalGateway, "proposalGateway must not be null");
     }
 
     /**
@@ -23,7 +22,7 @@ public class DefaultCancelProposalUseCase extends CancelProposalUseCase {
      * @throws NotFoundException if the proposal with the given ID is not found.
      */
     @Override
-    public void execute(Long proposalId) {
+    public void execute(final Long proposalId) {
         final var proposal = proposalGateway.getById(proposalId).orElseThrow(
                 () -> new NotFoundException("Proposal with ID " + proposalId + " not found"));
 
